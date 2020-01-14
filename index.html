@@ -16,13 +16,6 @@
             <v-switch v-model="readonly" class="ma-2" label="Readonly"></v-switch>
             <v-switch v-model="chips" class="ma-2" label="Chips"></v-switch>
             <v-switch v-model="multiple" class="ma-2" label="Multiple"></v-switch>
-            <!-- <v-switch v-model="appendIcon" class="ma-2" label="Append icon"></v-switch>
-            <v-switch v-model="appendSlot" class="ma-2" label="Append slot"></v-switch>
-            <v-switch v-model="appendItemSlot" class="ma-2" label="Append item slot"></v-switch>
-            <v-switch v-model="prependIcon" class="ma-2" label="Prepend icon"></v-switch>
-            <v-switch v-model="prependSlot" class="ma-2" label="Prepend slot"></v-switch>
-            <v-switch v-model="prependItemSlot" class="ma-2" label="Prepend item slot"></v-switch>
-            <v-switch v-model="selectSlot" class="ma-2" label="Selection slot"></v-switch> -->
             <v-col cols="12">
               <v-container fluid grid-list-xl>
                 <v-layout wrap align-center>
@@ -71,49 +64,8 @@
                       solo
                     ></select>
                   </v-flex>
-
-                  <v-flex xs12 sm6 d-flex>
-                    <v-select
-                      v-model="model"
-                      :items="items"
-                      label="Favorite Fruits"
-                      multiple
-                    >
-                      <template v-slot:prepend-item>
-                        <v-list-item
-                          ripple
-                          @click="toggle"
-                        >
-                          <v-list-item-action>
-                            <v-icon :color="selectedFruits.length > 0 ? 'indigo darken-4' : ''">{{ icon }}</v-icon>
-                          </v-list-item-action>
-                          <v-list-item-content>
-                            <v-list-item-title>Select All</v-list-item-title>
-                          </v-list-item-content>
-                        </v-list-item>
-                        <v-divider class="mt-2"></v-divider>
-                      </template>
-                    </v-select>
-                  </v-flex>
                 </v-layout>
               </v-container>
-
-              
-
-                <!-- <v-icon v-if="appendSlot" slot="append" color="green">mdi-plus</v-icon>
-                <v-icon v-if="prependSlot" slot="prepend" color="red">mdi-minus</v-icon>
-                <v-icon v-if="appendItemSlot" slot="append-item">mdi-contain-end</v-icon>
-                <v-icon v-if="prependItemSlot" slot="prepend-item">mdi-contain-start</v-icon> -->
-                <!-- <template v-if="selectSlot" v-slot:selection="{ item, index }">
-                  <v-chip v-if="index === 0">
-                    <span>{{ item }}</span>
-                  </v-chip>
-                  <span
-                    v-if="index === 1"
-                    class="grey--text caption"
-                  >(+{{ model.length - 1 }} others)</span>
-                </template> -->
-              
             </v-col>
           </v-row>
     </v-app>
