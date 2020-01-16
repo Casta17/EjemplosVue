@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+</head>
+
+<body>
+  <div id="app">
+    <v-app id="inspire">
+      <v-card sm="12" color="grey lighten-4" flat tile>
+        <v-toolbar dense>
+          <v-app-bar-nav-icon></v-app-bar-nav-icon>
+          <v-toolbar-title>Sugerencia</v-toolbar-title>
+          <v-spacer></v-spacer>
+          <v-btn icon>
+            <v-icon>mdi-dots-vertical</v-icon>
+          </v-btn>
+        </v-toolbar>
+      </v-card>
+      <v-card sm="8" style="margin-top:10px;">
+        <v-row class="col-4" justify="center" no-gutters>
+          <v-autocomplete v-model="model" :items="items" label="Sugerencia" :loading="isLoading"
+            :search-input.sync="search" clearable hide-details hide-selected item-text="name" item-value="symbol">
+          </v-autocomplete>
+        </v-row>
+      </v-card>
+    </v-app>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      vuetify: new Vuetify(),
+      data: () => ({
+        isLoading: false,
+        items: [],
+        model: null,
+        search: null,
+      }),
+
+      watch: {
+        search(val) {
+          // Items have already been loaded
+          //if (this.items.length > 0) return
+
+          this.isLoading = true
+          fetch('https://api.coinmarketcap.com/v2/listings/')
+            .then(res => res.json())
+            .then(res => {
+              this.items = res.data
+            })
+            .catch(err => {
+              console.log(err)
+            })
+            .finally(() => { this.isLoading = false })
+        },
+      },
+    })
+  </script>
+</body>
+
+</html>
