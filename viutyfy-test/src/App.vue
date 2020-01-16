@@ -32,25 +32,26 @@
         target="_blank"
         text
       >
-        <span class="mr-2">Latest Release</span>
+        <span class="mr-2">Ultimas Actualizaciones</span>
         <v-icon>mdi-open-in-new</v-icon>
       </v-btn>
     </v-app-bar>
 
     <v-content>
-      <HelloWorld/>
+      <Tabla1/>
     </v-content>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+//import HelloWorld from './components/HelloWorld';
+import Tabla1 from './components/Tabla1';
 
 export default {
   name: 'App',
 
   components: {
-    HelloWorld,
+    Tabla1,
   },
 
   data: () => ({
