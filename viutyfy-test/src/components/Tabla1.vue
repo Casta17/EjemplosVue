@@ -1,23 +1,26 @@
 <template>
-  <div>
-    <v-text-field
+  <v-card>
+    <v-card-title>
+      Usuarios
+      <v-spacer></v-spacer>
+      <v-text-field
         v-model="search"
         append-icon="search"
         label="Buscar"
         single-line
         hide-details
       ></v-text-field>
-      <v-data-table
-          :headers="encabezados"
-          :items="datos"
-          :items-per-page="3"
-          :locale="en-ES"
-          :multi-sort="true"
-          :show-group-by="true"
-          :search="search"
-          class="elevation-1"
-      ></v-data-table>
-  </div>
+    </v-card-title>
+    <v-data-table
+        :headers="encabezados"
+        :items="datos"
+        :items-per-page="3"
+        :multi-sort="true"
+        :show-group-by="true"
+        :search="search"
+        class="elevation-1"
+    ></v-data-table>
+  </v-card>
 </template>
 
 <script>
