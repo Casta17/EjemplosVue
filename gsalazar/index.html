@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+</head>
+<body>
+  <div id="app">
+    <v-app>
+      <v-content>
+        <v-container>
+            <v-row>
+                <v-card class="col-12">
+                    <v-card-title>Basic Form</v-card-title>
+                    <v-card-text>
+                        <v-form ref="form" v-model="valid" lazy-validation>
+                            <v-row>
+                                <v-col cols="6">
+                                    <v-text-field id="t1" v-model="text1" :counter="10" :rules="reglasText" label="text-field" required></v-text-field>
+                                </v-col>
+                                <v-col cols="6">
+                                    <v-text-field id="t2" v-model="text2" :counter="10" :rules="reglasText" label="text-field" required></v-text-field>
+                                </v-col>
+                                <v-col cols="6">
+                                    <v-select id="s1" v-model="select" :rules="reglasSelect" :items="itemsSelect" label="select" required></v-select>
+                                </v-col>
+                                <v-col cols="6">
+                                    <v-radio-group id="r1" v-model="r1" label="radio-group" row :rules="reglasRadio" required>
+                                        <v-radio color="info" key="r11" label="SI" value="SI"></v-radio>
+                                        <v-radio color="info" key="r12" label="NO" value="NO"></v-radio>
+                                      </v-radio-group>
+                                </v-col>
+                                <v-col cols="4">
+                                    <v-checkbox id="c1" color="info" v-model="checkbox" label="checkbox" :rules="reglasCheckbox" required></v-checkbox>
+                                </v-col>
+                                <v-col cols="4">
+                                    <v-switch id="sw1" color="info" v-model="switch1" label="Switch" :rules="reglasSwitch" required></v-switch>
+                                </v-col>
+                                <v-col cols="6">
+                                    <v-combobox id="s2" color="info" v-model="selectMult" :items="itemsSelectMult" label="select multiple" multiple chips :rules="reglasSelectMult" required>
+                                        <template v-slot:selection="data">
+                                        <v-chip :key="JSON.stringify(data.item)" v-bind="data.attrs" :input-value="data.selected" :disabled="data.disabled" @click:close="data.parent.selectItem(data.item)">
+                                            <v-avatar color="info" class="accent white--text" left v-text="data.item.slice(0, 1).toUpperCase()"></v-avatar>
+                                            {{ data.item }}
+                                        </v-chip>
+                                        </template>
+                                    </v-combobox>
+                                </v-col>
+                            </v-row>
+                            <v-row>
+                                <v-btn :disabled="!valid" color="success" class="mr-4" @click="validate"> Validate </v-btn>
+                                <v-btn color="error" class="mr-4" @click="reset">Reset Form</v-btn>
+                                <v-btn color="warning" class="mr-4" @click="resetValidation">Reset Validation</v-btn>
+                                <v-btn color="info" @click="getFormValues">Submit</v-btn>
+                            </v-row>
+                        </v-form>
+                    </v-card-text>
+                </v-card>
+            </v-row>
+        </v-container>
+      </v-content>
+    </v-app>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
