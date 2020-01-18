@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+</head>
+<body>
+  <div style="margin-left: 100px;margin-right: 100px;">
+  <div id="app">
+    <v-app>
+        <v-row align="center" justify="space-around">
+            <v-switch v-model="disabled" class="ma-2" label="Disabled"></v-switch>
+            <v-switch v-model="readonly" class="ma-2" label="Readonly"></v-switch>
+            <v-switch v-model="chips" class="ma-2" label="Chips"></v-switch>
+            <v-switch v-model="multiple" class="ma-2" label="Multiple"></v-switch>
+            <v-col cols="12">
+              <v-container fluid grid-list-xl>
+                <v-layout wrap align-center>
+                  <v-flex xs12 sm6 d-flex>
+                    <v-select
+                      v-model="model"
+                      :items="items"
+                      :disabled="disabled"
+                      :readonly="readonly"
+                      :chips="chips"
+                      :multiple="multiple"
+                      label="Label"
+                    ></select>
+                  </v-flex>
+            
+                  <v-flex xs12 sm6 d-flex>
+                    <v-select
+                      v-model="model"
+                      :items="items"
+                      :disabled="disabled"
+                      :readonly="readonly"
+                      :chips="chips"
+                      :multiple="multiple"
+                      filled
+                      label="Label"
+                    ></select>
+                  </v-flex>
+            
+                  <v-flex xs12 sm6 d-flex>
+                    <v-select
+                      :items="items"
+                      label="Outlines"
+                      outlined
+                    ></select>
+                  </v-flex>
+            
+                  <v-flex xs12 sm6 d-flex>
+                    <v-select
+                      v-model="model"
+                      :items="items"
+                      :disabled="disabled"
+                      :readonly="readonly"
+                      :chips="chips"
+                      :multiple="multiple"
+                      label="Label"
+                      solo
+                    ></select>
+                  </v-flex>
+                </v-layout>
+              </v-container>
+            </v-col>
+          </v-row>
+    </v-app>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  <script src="Script.js"></script>
+</body >
+</html>
