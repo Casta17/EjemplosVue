@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+</head>
+<body>
+  <div id="app">
+    <v-app>
+      <v-content>
+        <v-container>
+            <v-row>
+                <v-col cols="3">
+                    <v-menu
+                    v-model="fromDateMenu"
+                    :close-on-content-click="false"
+                    lazy
+                    transition="scale-transition"
+                    offset-y
+                    full-width
+                    max-width="290px"
+                    min-width="290px"
+                    >
+                    <template v-slot:activator="{ on }">
+                        <v-text-field
+                        label="Seleccione una fecha"
+                        readonly
+                        :value="fromDateDisp"
+                        v-on="on"
+                        ></v-text-field>
+                    </template>
+                    <v-date-picker
+                        locale="es"
+                        :min="minDate"
+                        :max="maxDate"
+                        v-model="fromDateVal"
+                        no-title
+                        @input="fromDateMenu = false"
+                    ></v-date-picker>
+                    </v-menu>
+                 </v-col>
+                 <v-col cols="3">
+                    <v-menu
+                    v-model="fromTimeMenu"
+                    :close-on-content-click="false"
+                    lazy
+                    transition="scale-transition"
+                    offset-y
+                    full-width
+                    max-width="290px"
+                    min-width="290px"
+                    >
+                    <template v-slot:activator="{ on }">
+                        <v-text-field
+                        label="Seleccione una hora"
+                        readonly
+                        :value="fromTimeDisp"
+                        v-on="on"
+                        ></v-text-field>
+                    </template>
+                    <v-time-picker 
+                        v-model="fromTimeVal"
+                        no-title
+                        @input="fromTimeMenu = false"
+                    ></v-time-picker>
+                    </v-menu>
+                 </v-col>
+            </v-row> 
+        </v-container>
+      </v-content>
+    </v-app>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  <script src="vue.js"></script>
+</body>
+</html>
